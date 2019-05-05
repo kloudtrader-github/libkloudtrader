@@ -78,8 +78,8 @@ def sell_preview(symbol,quantity,access_token=ACCESS_TOKEN,account_number=ACCOUN
         'side':'sell',
         'quantity':str(quantity),
         'type':str(order_type.lower()),
-        'price':None,
-        'stop':None,
+        'price':price,
+        'stop':stop,
         'preview':'true'
     }
     r=requests.post(BROKERAGE_API_URL+"/v1/accounts/"+str(account_number)+"/orders/",params=post_params,headers=get_headers(access_token))
@@ -99,8 +99,8 @@ def sell_short_preview(symbol,quantity,access_token=ACCESS_TOKEN,account_number=
         'side':'sell_short',
         'quantity':str(quantity),
         'type':str(order_type.lower()),
-        'price':None,
-        'stop':None,
+        'price':price,
+        'stop':stop,
         'preview':'true'
     }
     r=requests.post(BROKERAGE_API_URL+"/v1/accounts/"+str(account_number)+"/orders/",params=post_params,headers=get_headers(access_token))

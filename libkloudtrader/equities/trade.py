@@ -12,7 +12,7 @@ from time import sleep
 import json
 import requests 
 import os
-from libkloudtrader.defaults import ACCESS_TOKEN,ACCOUNT_NUMBER
+from defaults import *
 
 SANDBOX_API_URL="https://sandbox.tradier.com"
 BROKERAGE_API_URL="https://api.tradier.com"
@@ -77,12 +77,13 @@ def sell_preview(symbol,quantity,access_token=ACCESS_TOKEN,account_number=ACCOUN
         'side':'sell',
         'quantity':str(quantity),
         'type':str(order_type.lower()),
-        'price':None,
-        'stop':None,
+        'price':price,
+        'stop':stop,
         'preview':'true'
     }
     r=requests.post(BROKERAGE_API_URL+"/v1/accounts/"+str(account_number)+"/orders/",params=post_params,headers=get_headers(access_token))
     try:
+        print(r)
         return r.json()
     except:
         raise Exception("Did not receive any data. Status Code: %d"%r.status_code)
@@ -95,16 +96,16 @@ def sell_short_preview(symbol,quantity,access_token=ACCESS_TOKEN,account_number=
         'side':'sell_short',
         'quantity':str(quantity),
         'type':str(order_type.lower()),
-        'price':None,
-        'stop':None,
+        'price':price,
+        'stop':stop,
         'preview':'true'
     }
     r=requests.post(BROKERAGE_API_URL+"/v1/accounts/"+str(account_number)+"/orders/",params=post_params,headers=get_headers(access_token))
     try:
+        
         return r.json()
     except:
         raise Exception("Did not receive any data. Status Code: %d"%r.status_code)
-
 
 def buy(symbol,quantity,access_token=ACCESS_TOKEN,account_number=ACCOUNT_NUMBER,duration="day",order_type="market",price=None,stop=None):
     post_params={
