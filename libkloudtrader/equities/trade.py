@@ -83,7 +83,6 @@ def sell_preview(symbol,quantity,access_token=ACCESS_TOKEN,account_number=ACCOUN
     }
     r=requests.post(BROKERAGE_API_URL+"/v1/accounts/"+str(account_number)+"/orders/",params=post_params,headers=get_headers(access_token))
     try:
-        print(r)
         return r.json()
     except:
         raise Exception("Did not receive any data. Status Code: %d"%r.status_code)
