@@ -168,7 +168,7 @@ def sell(symbol,quantity,access_token=ACCESS_TOKEN,account_number=ACCOUNT_NUMBER
             return pd.DataFrame(r.json()['order'],index=[0])
     except:
         raise Exception("Did not receive any data. Status Code: %d"%r.status_code)
-       
+
 def sell_short(symbol,quantity,access_token=ACCESS_TOKEN,account_number=ACCOUNT_NUMBER,duration="day",order_type="market",price=None,stop=None):
     post_params={
         'class':'equity',
@@ -186,7 +186,7 @@ def sell_short(symbol,quantity,access_token=ACCESS_TOKEN,account_number=ACCOUNT_
         return r.json()
     except:
         raise Exception("Did not receive any data. Status Code: %d"%r.status_code)
-        
+
 def change_equity_order(order_id,access_token=ACCESS_TOKEN,account_number=ACCOUNT_NUMBER,duration="day",order_type="market",price=None,stop=None,dataframe=False):
     put_params={
         'order_id':order_id,

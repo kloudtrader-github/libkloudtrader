@@ -12,7 +12,7 @@ from time import sleep
 import json
 import requests 
 import os
-from defaults import *
+from libkloudtrader.defaults import *
 
 SANDBOX_API_URL="https://sandbox.tradier.com"
 BROKERAGE_API_URL="https://api.tradier.com"
